@@ -1,0 +1,289 @@
+/* 
+   Mosquito Risk Dashboard - style.css
+  
+ */
+
+:root{
+  --bg: #0b1220;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel-2: rgba(255, 255, 255, 0.10);
+  --text: #e6edf7;
+  --muted: rgba(230, 237, 247, 0.70);
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 18px 45px rgba(0,0,0,.35);
+
+  --good: #20c997;
+  --warn: #ffd43b;
+  --bad:  #ff6b6b;
+
+  --radius: 16px;
+  --radius-sm: 12px;
+  --pad: 18px;
+}
+
+/* Base */
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+
+body{
+  margin: 0;
+  padding: 28px 18px 40px;
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+  letter-spacing: 0.2px;
+
+  /* techy gradient + subtle grid */
+  background:
+    radial-gradient(900px 600px at 15% 10%, rgba(46, 217, 255, 0.14), transparent 55%),
+    radial-gradient(900px 600px at 85% 20%, rgba(122, 92, 255, 0.14), transparent 55%),
+    radial-gradient(900px 600px at 60% 90%, rgba(32, 201, 151, 0.10), transparent 55%),
+    linear-gradient(180deg, #070b14 0%, var(--bg) 100%);
+  position: relative;
+}
+
+/* background grid overlay */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.18;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: radial-gradient(closest-side at 50% 30%, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+/* Headings */
+h1{
+  margin: 0 0 18px;
+  font-size: clamp(22px, 2.4vw, 34px);
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h1::before{
+  content:"";
+  width: 10px;
+  height: 28px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(46,217,255,1), rgba(122,92,255,1));
+  box-shadow: 0 0 0 6px rgba(255,255,255,0.03);
+}
+
+.box{
+  max-width: 1100px;
+  margin: 14px auto;
+  padding: var(--pad);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel), rgba(255,255,255,0.03));
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  overflow: hidden;
+  position: relative;
+}
+
+.box::after{
+  content:"";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(700px 220px at 20% 0%, rgba(46,217,255,0.14), transparent 60%);
+}
+
+h2{
+  margin: 0 0 14px;
+  font-size: 16px;
+  font-weight: 750;
+  letter-spacing: 0.3px;
+  color: rgba(230, 237, 247, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* subtle "status pill" on right side of h2 */
+h2::after{
+  content: "LIVE";
+  font-size: 11px;
+  letter-spacing: 1px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: rgba(230, 237, 247, 0.9);
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.06);
+}
+
+/* For Alerts box, make pill different */
+.box:nth-of-type(2) h2::after{
+  content: "ALERTS";
+  border-color: rgba(255, 107, 107, 0.28);
+  background: rgba(255, 107, 107, 0.10);
+}
+
+/* Table */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(10, 16, 30, 0.55);
+}
+
+thead th{
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+  color: rgba(230, 237, 247, 0.80);
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tbody td{
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  color: rgba(230, 237, 247, 0.90);
+  font-size: 14px;
+}
+
+tbody tr:last-child td{ border-bottom: none; }
+
+tbody tr{
+  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+}
+
+tbody tr:hover{
+  background: rgba(255,255,255,0.06);
+}
+
+tbody td:nth-child(1){
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+tbody td:nth-child(6){
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+/* Make "Waiting for data..." look clean */
+#deviceRows tr td[colspan="7"]{
+  text-align: center;
+  color: var(--muted);
+  padding: 22px 14px;
+}
+
+/* Alerts list */
+#alertList{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+#alertList li{
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 107, 107, 0.22);
+  background: rgba(255, 107, 107, 0.10);
+  color: rgba(255, 235, 235, 0.95);
+  font-size: 14px;
+  line-height: 1.35;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+/* Default "No alerts yet" styling */
+#alertList li:first-child:only-child{
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  color: var(--muted);
+}
+
+/* Responsive tweaks */
+@media (max-width: 820px){
+  body{ padding: 20px 12px 34px; }
+  .box{ padding: 14px; }
+  thead th, tbody td{ padding: 10px 10px; }
+}
+
+@media (max-width: 640px){
+  h1{ justify-content: center; text-align: center; }
+  .box{ margin: 12px auto; }
+
+  /* Make table horizontally scrollable on mobile without HTML changes */
+  .box:first-of-type{
+    overflow-x: auto;
+  }
+
+  table{
+    min-width: 720px; /* keeps columns readable */
+  }
+}
+/* ===== Risk text coloring (LOW/MEDIUM/HIGH) ===== */
+.risk-low{ color: var(--good); font-weight: 800; }
+.risk-medium{ color: var(--warn); font-weight: 800; }
+.risk-high{ color: var(--bad); font-weight: 800; }
+
+
+/* ===== Map ===== */
+#map{
+  height: 360px;
+  width: 100%;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: rgba(10, 16, 30, 0.55);
+}
+
+/* Legend */
+.map-legend{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.legend-dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-left: 6px;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.legend-dot.safe{ background: var(--good); }
+.legend-dot.danger{ background: var(--bad); }
+
+/* Leaflet dark fit (small polish) */
+.leaflet-container{
+  background: rgba(10, 16, 30, 0.55);
+}
+/* Leaflet marker SVG force-visible (fix: dots not showing) */
+#map svg { display: block !important; visibility: visible !important; }
+#map .leaflet-pane, 
+#map .leaflet-overlay-pane,
+#map .leaflet-marker-pane { z-index: 1000 !important; }

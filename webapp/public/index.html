@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Mosquito Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Leaflet CSS (ONLY ONCE, in head) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+  <h1>Mosquito Risk Dashboard</h1>
+
+  <div class="box">
+    <h2>Live Devices</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Device</th>
+          <th>Temperature</th>
+          <th>Humidity</th>
+          <th>Soil</th>
+          <th>Water</th>
+          <th class="">Risk</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody id="deviceRows">
+        <tr><td colspan="7">Waiting for data.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box">
+    <h2>Alerts (Risk ≥ 60)</h2>
+    <ul id="alertList"><li>No alerts yet</li></ul>
+  </div>
+
+  <div class="box">
+    <h2>Risk Map</h2>
+    <div id="map"></div>
+    <div class="map-legend">
+      <span class="legend-dot safe"></span> Safe
+      <span class="legend-dot danger"></span> Dangerous
+    </div>
+  </div>
+
+  <!-- Leaflet JS (must be BEFORE app.js) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

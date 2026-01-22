@@ -1,0 +1,27 @@
+{
+  "name": "mosquito-webapp",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
+{
+  "id":"N01",
+  "t":31.5,
+  "h":78,
+  "s":320,
+  "w":1,
+  "r":85,
+  "time":"10:45",
+  "lat":28.6139,
+  "lon":77.2090
+}

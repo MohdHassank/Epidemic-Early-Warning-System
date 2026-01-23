@@ -7,6 +7,8 @@ This section explains the **Data Flow Diagrams (DFD Level 0 and Level 1)** of th
 ### What it Represents
 DFD Level 0 shows the system as **one single process** and how it interacts with external entities.
 
+![image](https://github.com/MohdHassank/Epidemic-Early-Warning-System/blob/main/Diagrams/DFD-Level-0.png?raw=true)
+
 It answers:
 - Who provides data to the system?
 - Who receives output from the system?
@@ -64,6 +66,8 @@ This is part of future enhancement.
 ## 🟡 DFD Level 1 
 
 Level 1 breaks the system into **actual working processes** and shows how data flows inside the system step-by-step.
+
+![image](https://github.com/MohdHassank/Epidemic-Early-Warning-System/blob/main/Diagrams/DFD-Level-1.png?raw=true)
 
 
 
